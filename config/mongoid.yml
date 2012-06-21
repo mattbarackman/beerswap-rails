@@ -60,6 +60,13 @@ development:
     # use_utc: false
 
 production:
-  sessions:
-    default:
-      uri: <%= ENV['MONGOLAB_URI'] %>
+  host: <%= ENV['ds033907.mongolab.com'] %>
+  port: <%= ENV['33907'] %>
+  username: <%= ENV['heroku_app5420921'] %>
+  password: <%= ENV['ufoqjjrfbjipggp55chv2d92q0'] %>
+  database: <%= ENV['heroku_app5420921'] %>
+
+
+#  sessions:
+ #   default:
+  #    uri: <%= ENV['MONGOLAB_URI'] %>
