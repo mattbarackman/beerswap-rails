@@ -4,6 +4,7 @@ gem 'rails', '3.2.6'
 gem "bson_ext", "1.6.4"
 gem "mongoid", "~> 3.0.0.rc"
 gem "heroku"
+gem "thin"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
