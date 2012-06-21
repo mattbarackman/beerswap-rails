@@ -62,10 +62,10 @@ development:
 production:
   sessions:
     default:
-      host: <%= ENV['ds033907.mongolab.com'] %>
-      port: <%= ENV['33907'] %>
-      username: <%= ENV['heroku_app5420921'] %>
-      password: <%= ENV['ufoqjjrfbjipggp55chv2d92q0'] %>
-      database: <%= ENV['heroku_app5420921'] %>
+      host: <%= 'ds033907.mongolab.com' %>
+      port: <%= '33907' %>
+      username: <%= 'heroku_app5420921' %>
+      password: <%= 'ufoqjjrfbjipggp55chv2d92q0' %>
+      database: <%= 'heroku_app5420921' %>
 
   #    uri: <%= ENV['MONGOLAB_URI'] %>
