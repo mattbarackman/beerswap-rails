@@ -66,7 +66,7 @@ module Beerswap
     config.assets.version = '1.0'
     
     config.generators do |g|
-      g.orm             :mongo_mapper
+      g.orm             :mongoid
       g.template_engine :erb
       g.test_framework  :rspec
     end
