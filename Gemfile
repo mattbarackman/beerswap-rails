@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.6'
 gem "bson_ext", "1.6.4"
 gem "mongo_mapper", "0.11.1"
+gem "heroku"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
