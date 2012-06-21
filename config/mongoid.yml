@@ -62,8 +62,8 @@ development:
 production:
   sessions:
     default:
-      host: <%= 'ds033907.mongolab.com' %>
-      port: <%= '33907' %>
+      hosts: 
+        - <%= 'ds033907.mongolab.com' %>:<%= '33907' %>
       username: <%= 'heroku_app5420921' %>
       password: <%= 'ufoqjjrfbjipggp55chv2d92q0' %>
       database: <%= 'heroku_app5420921' %>
