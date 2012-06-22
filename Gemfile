@@ -33,6 +33,8 @@ group :test, :spec, :cucumber do
   gem 'cucumber-rails', "1.3.0"
   gem 'spork', "0.9.2"
   gem 'launchy', "2.1.0"
+  gem 'mongoid-rspec'
+  gem 'factory_girls_rails'
 end
 
 
