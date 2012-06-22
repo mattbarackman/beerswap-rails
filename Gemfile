@@ -4,7 +4,9 @@ gem 'rails', '3.2.6'
 gem "bson_ext", "1.6.4"
 gem "mongoid", "~> 3.0.0.rc"
 gem "heroku"
-gem "thin"
+gem "thin", "1.3.1"
+gem "omniauth", "1.1.0"
+gem "omniauth-facebook", "1.3.0"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
