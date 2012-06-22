@@ -1,0 +1,29 @@
+<%= form_for(@brewhouse) do |f| %>
+  <% if @brewhouse.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@brewhouse.errors.count, "error") %> prohibited this brewhouse from being saved:</h2>
+
+      <ul>
+      <% @brewhouse.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :zipcode %><br />
+    <%= f.text_field :zipcode %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :activebeers %><br />
+    <%= f.number_field :activebeers %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

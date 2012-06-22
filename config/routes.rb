@@ -1,4 +1,8 @@
 Beerswap::Application.routes.draw do
+  resources :beers
+
+  resources :brewhouses
+
   resources :users
 
   # The priority is based upon order of creation:

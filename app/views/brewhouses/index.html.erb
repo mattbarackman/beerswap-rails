@@ -1,0 +1,27 @@
+<h1>Listing brewhouses</h1>
+
+<table>
+  <tr>
+    <th>Zipcode</th>
+    <th>Name</th>
+    <th>Activebeers</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @brewhouses.each do |brewhouse| %>
+  <tr>
+    <td><%= brewhouse.zipcode %></td>
+    <td><%= brewhouse.name %></td>
+    <td><%= brewhouse.activebeers %></td>
+    <td><%= link_to 'Show', brewhouse %></td>
+    <td><%= link_to 'Edit', edit_brewhouse_path(brewhouse) %></td>
+    <td><%= link_to 'Destroy', brewhouse, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Brewhouse', new_brewhouse_path %>
