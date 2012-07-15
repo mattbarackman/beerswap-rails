@@ -80,4 +80,10 @@ class BeersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def scrape
+    require "mechanize"
+    agent = WWW::Mechanize.new
+    puts agent
+  end
 end
