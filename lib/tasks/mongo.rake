@@ -4,4 +4,4 @@ namespace :db do
       # Stub out for MongoDB
     end
   end
-end
+end	

@@ -7,6 +7,7 @@ gem "heroku"
 gem "thin", "1.3.1"
 gem "omniauth", "1.1.0"
 gem "omniauth-facebook", "1.3.0"
+gem "mongoid-rspec"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -30,13 +31,12 @@ group :test, :spec, :cucumber do
   gem 'capybara', "1.1.2"
   gem 'cucumber', "1.2.1"
   gem 'database_cleaner', "0.8.0"
-  gem 'cucumber-rails', "1.3.0"
+  gem 'cucumber-rails', "1.3.0", :require => false
   gem 'spork', "0.9.2"
   gem 'launchy', "2.1.0"
   gem 'mongoid-rspec'
   gem 'factory_girl_rails'
 end
-
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

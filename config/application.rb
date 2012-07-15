@@ -1,4 +1,4 @@
-require File.expand_path('../boot', __FILE__)
+    require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
 # require "active_record/railtie"
@@ -69,6 +69,11 @@ module Beerswap
     #  g.orm             :mongoid
       g.template_engine :erb
       g.test_framework  :rspec
+    end
+
+    config.generators do |g|
+      g.view_specs false
+      g.helper_specs false
     end
   end
 
