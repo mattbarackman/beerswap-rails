@@ -81,9 +81,59 @@ class BeersController < ApplicationController
     end
   end
 
+  # takes a mechanize agent object and page object
+  
+  def find_page_type(agent, current)
+    current_url = current.uri.to_s
+    puts current_url
+    case 
+    #beer
+    when current_url.match(/\/beer\/profile\/[0-9]+\/[0-9]+/) 
+      return "beer"
+    #brewery
+    when current_url.match(/\/beer\/profile\/[0-9]+$/) 
+      return "brewery"
+    #breweries
+    when current_url.match(/\/beerfly\/list?.+/) 
+      return "breweries"
+    #state
+    when current_url.match(/\/beerfly\/directory\/[0-9]+\/[A-Z][A-Z]\/[A-Z][A-Z]$/) 
+      return "state"
+    #country
+    when current_url.match(/\/beerfly\/directory\/[0-9]+\/[A-Z][A-Z]$/)
+      return "country"
+    #top_level
+    when current_url.match(/\/beerfly\/directory\?show=all/)
+      return "top_level"
+    else
+      return false 
+    end
+  end
+
+  def scrape_helper(agent, current)
+    page_type = find_page_type(agent, current)
+    case page_type
+    when "beer"
+      beer_name = current.title.gsub(/\s-\s.+/,"")
+      puts beer_name
+    end
+    # base case for brewery page
+  end
+
+
   def scrape
-    require "mechanize"
-    agent = WWW::Mechanize.new
-    puts agent
+    require 'mechanize'
+    ## create agent
+    agent = Mechanize.new
+    current = agent.get("http://beeradvocate.com/beer/profile/735/66190")
+    #current = agent.get("http://beeradvocate.com/beer/profile/735")
+    #current = agent.get("http://beeradvocate.com/beerfly/list?c_id=US&s_id=CA&brewery=Y")
+    #current = agent.get("http://beeradvocate.com/beerfly/directory/0/US/CA")
+    #current = agent.get("http://beeradvocate.com/beerfly/directory/0/US")
+    #current = agent.get("http://beeradvocate.com/beerfly/directory?show=all")
+    #current = agent.get("http://www.google.com")
+    #current = agent.get("http://beeradvocate.com/beer/profile/735")
+    scrape_helper(agent, current)
+    redirect_to beers_path
   end
 end
