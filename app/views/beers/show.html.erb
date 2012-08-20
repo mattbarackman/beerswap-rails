@@ -2,24 +2,27 @@
 
 <p>
   <b>Style:</b>
-  <%= @beer.style %>
+  <%= @beer.beer_style %>
 </p>
 
 <p>
   <b>Abv:</b>
-  <%= @beer.abv %>
+  <%= @beer.beer_abv %>
 </p>
 
 <p>
   <b>Bascore:</b>
-  <%= @beer.bascore %>
+  <%= @beer.beer_bascore %>
 </p>
 
 <p>
   <b>Name:</b>
-  <%= @beer.name %>
+  <%= @beer.beer_name %>
 </p>
 
-
+<p>
+  <b>Brewery:</b>
+  <%= @beer.brewery_name %>
+</p>
 <%= link_to 'Edit', edit_beer_path(@beer) %> |
 <%= link_to 'Back', beers_path %>

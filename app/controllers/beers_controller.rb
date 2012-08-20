@@ -41,6 +41,7 @@ class BeersController < ApplicationController
   # POST /beers.json
   def create
     @beer = Beer.new(params[:beer])
+    #puts params[:beer]
 
     respond_to do |format|
       if @beer.save
@@ -116,16 +117,48 @@ class BeersController < ApplicationController
     when "beer"
       beer_name = current.title.gsub(/\s-\s.+/,"")
       puts beer_name
+      beer_style = find_on_page(current, %r{\/beer\/style\/[1-9]+}, "<b>", "</b>")
+      puts beer_style
+      brewery_name = find_on_page(current, %r{\/beer\/profile\/[0-9]+}, "<b>", "</b>")
+      puts brewery_name
+      abv_anchor = current.content.index(%r{[0-9]+\.[0-9]+\%\s\<a\shref\=\"\/articles\/[0-9]+\"\>ABV})
+      if abv_anchor == nil
+        beer_abv = nil
+      else  
+        abv_end = current.content.index("%", abv_anchor)
+        beer_abv = current.content[abv_anchor...abv_end]
+      end
+      puts beer_abv
+      beer_params = { :brewery_name => brewery_name, 
+               :beer_name => beer_name, 
+               :beer_style => beer_style,
+               :beer_abv => beer_abv}
+      puts beer_params
+      beer = Beer.new(beer_params)
+      beer.save
+
     end
+
     # base case for brewery page
   end
 
+def find_on_page(current, start_regex, start_tag, end_tag)
+  anchor = current.content.index(start_regex)
+  if anchor == nil
+    return nil
+  else
+    start = current.content.index(start_tag, anchor)
+    final = current.content.index(end_tag, start)
+    name = current.content[start+(end_tag).length-1...final]
+    return name
+  end
+end
 
   def scrape
     require 'mechanize'
     ## create agent
     agent = Mechanize.new
-    current = agent.get("http://beeradvocate.com/beer/profile/735/66190")
+    current = agent.get("http://beeradvocate.com/beer/profile/9897/71470")
     #current = agent.get("http://beeradvocate.com/beer/profile/735")
     #current = agent.get("http://beeradvocate.com/beerfly/list?c_id=US&s_id=CA&brewery=Y")
     #current = agent.get("http://beeradvocate.com/beerfly/directory/0/US/CA")

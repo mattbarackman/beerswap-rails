@@ -6,6 +6,7 @@
     <th>Abv</th>
     <th>Bascore</th>
     <th>Name</th>
+    <th>Brewery</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,13 +14,14 @@
 
 <% @beers.each do |beer| %>
   <tr>
-    <td><%= beer.style %></td>
-    <td><%= beer.abv %></td>
-    <td><%= beer.bascore %></td>
-    <td><%= beer.name %></td>
+    <td><%= beer.beer_style %></td>
+    <td><%= beer.beer_abv %></td>
+    <td><%= beer.beer_bascore %></td>
+    <td><%= beer.beer_name %></td>
+    <td><%= beer.brewery_name %></td>
     <td><%= link_to 'Show', beer %></td>
     <td><%= link_to 'Edit', edit_beer_path(beer) %></td>
-    <td><%= link_to 'Destroy', beer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to 'Destroy', beer, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

@@ -12,20 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :style %><br />
-    <%= f.text_field :style %>
+    <%= f.label :beer_style %><br />
+    <%= f.text_field :beer_style %>
   </div>
   <div class="field">
-    <%= f.label :abv %><br />
-    <%= f.text_field :abv %>
+    <%= f.label :beer_abv %><br />
+    <%= f.text_field :beer_abv %>
   </div>
   <div class="field">
-    <%= f.label :bascore %><br />
-    <%= f.number_field :bascore %>
+    <%= f.label :beer_bascore %><br />
+    <%= f.number_field :beer_bascore %>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :beer_name %><br />
+    <%= f.text_field :beer_name %>
+  </div>
+  <div class="field">
+    <%= f.label :brewery_name %><br />
+    <%= f.text_field :brewery_name %>
   </div>
   <div class="actions">
     <%= f.submit %>

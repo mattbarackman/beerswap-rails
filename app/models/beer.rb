@@ -1,7 +1,8 @@
 class Beer
   include Mongoid::Document
-  field :style, type: String
-  field :abv, type: String
-  field :bascore, type: Integer
-  field :name, type: String
+  field :beer_style, type: String
+  field :beer_abv, type: Float
+  field :beer_bascore, type: Integer
+  field :beer_name, type: String
+  field :brewery_name, type: String
 end
