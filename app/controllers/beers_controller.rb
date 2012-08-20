@@ -1,3 +1,9 @@
+class String
+    def is_i?
+       !!(self =~ /^[-+]?[0-9]+$/)
+    end
+end
+
 class BeersController < ApplicationController
   # GET /beers
   # GET /beers.json
@@ -111,17 +117,45 @@ class BeersController < ApplicationController
     end
   end
 
+  def find_link_type(agent, link)
+    link_url = link.href 
+    case 
+    #beer
+    when link_url.match(/\/beer\/profile\/[0-9]+\/[0-9]+\z/) 
+      return "beer"
+    #brewery
+    when link_url.match(/\/beer\/profile\/[0-9]+$/) 
+      return "brewery"
+    #breweries
+    when link_url.match(/\/beerfly\/list?.+/) 
+      return "breweries"
+    #state
+    when link_url.match(/\/beerfly\/directory\/[0-9]+\/[A-Z][A-Z]\/[A-Z][A-Z]$/) 
+      return "state"
+    #country
+    when link_url.match(/\/beerfly\/directory\/[0-9]+\/[A-Z][A-Z]$/)
+      return "country"
+    #top_level
+    when link_url.match(/\/beerfly\/directory\?show=all/)
+      return "top_level"
+    else
+      return false 
+    end
+  end
+
   def scrape_helper(agent, current)
     page_type = find_page_type(agent, current)
     case page_type
     when "beer"
       beer_name = current.title.gsub(/\s-\s.+/,"")
       puts beer_name
-      beer_style = find_on_page(current, %r{\/beer\/style\/[1-9]+}, "<b>", "</b>")
-      puts beer_style
-      brewery_name = find_on_page(current, %r{\/beer\/profile\/[0-9]+}, "<b>", "</b>")
-      puts brewery_name
+      beer_style = find_on_page(current, %r{\/beer\/style\/[0-9]+}, "<b>", "</b>")
+      brewery_name = find_on_page(current, %r{\/beer\/profile\/[0-9]+\"}, "<b>", "</b>")
       abv_anchor = current.content.index(%r{[0-9]+\.[0-9]+\%\s\<a\shref\=\"\/articles\/[0-9]+\"\>ABV})
+      bascore_anchor = current.content.index(%r{BAscore_big})
+      bascore_start = current.content.index(">", bascore_anchor)
+      bascore_end = current.content.index("<", bascore_start)
+      beer_bascore = current.content[bascore_start+1...bascore_end]      
       if abv_anchor == nil
         beer_abv = nil
       else  
@@ -132,11 +166,21 @@ class BeersController < ApplicationController
       beer_params = { :brewery_name => brewery_name, 
                :beer_name => beer_name, 
                :beer_style => beer_style,
-               :beer_abv => beer_abv}
+               :beer_abv => beer_abv,
+               :beer_bascore => beer_bascore}
       puts beer_params
       beer = Beer.new(beer_params)
       beer.save
-
+    
+    when "brewery"
+      puts "start link list"
+      current.links.each do |link|
+        if find_link_type(agent, link) == "beer"
+          current = link.click
+          scrape_helper(agent, current)
+          sleep(2)
+        end
+      end
     end
 
     # base case for brewery page
@@ -158,7 +202,8 @@ end
     require 'mechanize'
     ## create agent
     agent = Mechanize.new
-    current = agent.get("http://beeradvocate.com/beer/profile/9897/71470")
+    #current = agent.get("http://beeradvocate.com/beer/profile/735/20781")
+    current = agent.get("http://beeradvocate.com/beer/profile/735/56656")
     #current = agent.get("http://beeradvocate.com/beer/profile/735")
     #current = agent.get("http://beeradvocate.com/beerfly/list?c_id=US&s_id=CA&brewery=Y")
     #current = agent.get("http://beeradvocate.com/beerfly/directory/0/US/CA")

@@ -9,6 +9,8 @@ gem "omniauth", "1.1.0"
 gem "omniauth-facebook", "1.3.0"
 gem "mongoid-rspec", '1.4.6'
 gem "mechanize", '2.5.1'
+gem "bootstrap-sass", '2.0.4.0'
+gem "jquery-rails", '2.0.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

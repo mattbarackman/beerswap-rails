@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Brewery:</b>
+  <%= @beer.brewery_name %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @beer.beer_name %>
+</p>
+
+<p>
   <b>Style:</b>
   <%= @beer.beer_style %>
 </p>
@@ -15,14 +25,5 @@
   <%= @beer.beer_bascore %>
 </p>
 
-<p>
-  <b>Name:</b>
-  <%= @beer.beer_name %>
-</p>
-
-<p>
-  <b>Brewery:</b>
-  <%= @beer.brewery_name %>
-</p>
 <%= link_to 'Edit', edit_beer_path(@beer) %> |
 <%= link_to 'Back', beers_path %>
