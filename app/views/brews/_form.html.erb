@@ -17,11 +17,15 @@
   </div>
   <div class="field">
     <%= f.label :style %><br />
-    <%= f.text_field :style %>
+    <%= f.collection_select :style, Brew::BREW_STYLES, :to_s, :to_s, 
+       :include_blank => true
+    %>
   </div>
   <div class="field">
     <%= f.label :mash_type %><br />
-    <%= f.text_field :mash_type %>
+    <%= f.collection_select :style, Brew::MASH_TYPES, :to_s, :to_s, 
+       :include_blank => true
+    %>
   </div>
   <div class="field">
     <%= f.label :grains %><br />
@@ -40,13 +44,12 @@
     <%= f.text_field :instructions %>
   </div>
   <div class="field">
-    <%= f.label :submitted_by %><br />
-    <%= f.text_field :submitted_by %>
-  </div>
-  <div class="field">
     <%= f.label :created_by %><br />
     <%= f.text_field :created_by %>
   </div>
+
+  <%= f.hidden_field :submitted_by, :value => current_user.name %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

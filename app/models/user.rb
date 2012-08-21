@@ -49,6 +49,9 @@ class User
 
   validates_presence_of :name, :email, :password
   validates_uniqueness_of :name
+
+  ## owns brews
+  has_many :brews
   
   ## Facebook auth
   field :provider, :type => String

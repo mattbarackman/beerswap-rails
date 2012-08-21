@@ -1,0 +1,41 @@
+<h1>Listing brews</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Style</th>
+    <th>Mash type</th>
+    <th>Grains</th>
+    <th>Hops</th>
+    <th>Extras</th>
+    <th>Instructions</th>
+    <th>Submitted by</th>
+    <th>Created by</th>
+    <th>Submitted at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @brews.each do |brew| %>
+  <tr>
+    <td><%= brew.name %></td>
+    <td><%= brew.style %></td>
+    <td><%= brew.mash_type %></td>
+    <td><%= brew.grains %></td>
+    <td><%= brew.hops %></td>
+    <td><%= brew.extras %></td>
+    <td><%= brew.instructions %></td>
+    <td><%= brew.submitted_by %></td>
+    <td><%= brew.created_by %></td>
+    <td><%= brew.submitted_at %></td>
+    <td><%= link_to 'Show', brew %></td>
+    <td><%= link_to 'Edit', edit_brew_path(brew) %></td>
+    <td><%= link_to 'Destroy', brew, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Brew', new_brew_path %>

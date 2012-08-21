@@ -1,6 +1,9 @@
 class BrewsController < ApplicationController
   # GET /brews
   # GET /brews.json
+
+
+
   def index
     @brews = Brew.all
 
