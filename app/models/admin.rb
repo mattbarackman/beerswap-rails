@@ -1,12 +1,10 @@
-class User
+class Admin
   include Mongoid::Document
-  include Mongoid::Timestamps
-
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable
 
   ## Database authenticatable
   field :email,              :type => String, :default => ""
@@ -42,28 +40,4 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
-  field :name, type: String
-  field :email, type: String, default: ""
-  field :password, type: String
-
-  validates_presence_of :name, :email, :password
-  validates_uniqueness_of :name
-  
-  ## Facebook auth
-  field :provider, :type => String
-  field :uid, :type => String
-  
-  # see https://github.com/plataformatec/devise/wiki/OmniAuth%3A-Overview
-  def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
-  user = User.where(:provider => auth.provider, :uid => auth.uid).first
-    unless user
-      user = User.create(name:auth.extra.raw_info.name,
-                           provider:auth.provider,
-                           uid:auth.uid,
-                           email:auth.info.email,
-                           password:Devise.friendly_token[0,20]
-                           )
-    end
-    user
-  end
 end

@@ -1,13 +1,28 @@
+
 Beerswap::Application.routes.draw do
+
+  devise_for :admins
+
+authenticated :user do
+  root :to => 'home#index'
+end
+
+root :to => 'home#index'
+
+devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
   resources :beers do
     collection do
       get :scrape
     end
   end
 
-  resources :brewhouses
 
-  resources :users
+resources :brewhouses
+
+#resources :users
+
+
 
 
   # The priority is based upon order of creation:

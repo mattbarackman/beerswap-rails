@@ -1,16 +1,18 @@
 source 'https://rubygems.org'
 
+gem "mechanize", '2.5.1'
 gem 'rails', '3.2.6'
 gem "bson_ext", "1.6.4"
-gem "mongoid", "~> 3.0.0.rc"
-gem "heroku"
+gem "mongoid", '3.0.0.rc'
+gem "heroku", '2.28.0'
 gem "thin", "1.3.1"
 gem "omniauth", "1.1.0"
 gem "omniauth-facebook", "1.3.0"
 gem "mongoid-rspec", '1.4.6'
-gem "mechanize", '2.5.1'
 gem "bootstrap-sass", '2.0.4.0'
 gem "jquery-rails", '2.0.2'
+gem 'devise', '2.1.2'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -29,12 +31,13 @@ group :assets do
 end
 
 group :test, :spec, :cucumber do
-  gem 'rspec', "2.10.0"
-  gem 'rspec-rails', "2.10.1"
+  gem 'rspec', '2.10.0'
+  gem 'rspec-rails', '2.10.1'
   gem 'capybara', "1.1.2"
   gem 'cucumber', "1.2.1"
   gem 'database_cleaner', "0.8.0"
   gem 'cucumber-rails', "1.3.0", :require => false
+  gem 'email_spec', '1.2.1'
   gem 'spork', "0.9.2"
   gem 'launchy', "2.1.0"
   gem 'mongoid-rspec', '1.4.6'

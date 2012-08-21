@@ -75,6 +75,10 @@ module Beerswap
       g.view_specs false
       g.helper_specs false
     end
+
+    # added per "devise" installation instructions
+    config.assets.initialize_on_precompile = false
+
   end
 
 
