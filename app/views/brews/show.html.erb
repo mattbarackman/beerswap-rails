@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @brew.name %>
+</p>
+
+<p>
+  <b>Style:</b>
+  <%= @brew.style %>
+</p>
+
+<p>
+  <b>Mash type:</b>
+  <%= @brew.mash_type %>
+</p>
+
+<p>
+  <b>Grains:</b>
+  <%= @brew.grains %>
+</p>
+
+<p>
+  <b>Hops:</b>
+  <%= @brew.hops %>
+</p>
+
+<p>
+  <b>Extras:</b>
+  <%= @brew.extras %>
+</p>
+
+<p>
+  <b>Instructions:</b>
+  <%= @brew.instructions %>
+</p>
+
+<p>
+  <b>Submitted by:</b>
+  <%= @brew.submitted_by %>
+</p>
+
+<p>
+  <b>Created by:</b>
+  <%= @brew.created_by %>
+</p>
+
+<p>
+  <b>Submitted at:</b>
+  <%= @brew.submitted_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_brew_path(@brew) %> |
+<%= link_to 'Back', brews_path %>

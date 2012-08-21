@@ -45,6 +45,7 @@ class User
   field :name, type: String
   field :email, type: String, default: ""
   field :password, type: String
+  field :admin, type: Boolean, default: false 
 
   validates_presence_of :name, :email, :password
   validates_uniqueness_of :name
