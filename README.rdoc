@@ -1,8 +1,0 @@
-BeerHub
-
-BeerHub is a place for homebrewers to find and share their favorite homebrew recipes. 
-
-It is my first real web app and I'll be using Ruby on Rails, Heroku, and MongoDB (Mongoid).
-
-Let me know what you think!
-Matt
