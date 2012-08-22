@@ -232,8 +232,16 @@ Devise.setup do |config|
 
   # add necessary components for Facebook Auth
   # i may run into errors with heroku. see https://github.com/plataformatec/devise/wiki/OmniAuth%3a-Overview
+  
+  if Rails.env.production?
+   APP_ID = '174755722649367'
+   APP_SECRET = 'df03769a76c02b254ceb06b9a3637532'
+  else
+   APP_ID = "405833446147616"
+   APP_SECRET = "0beaeeb686199cb37585eb1ca5ce8339"
+  end
   require "omniauth-facebook"
-  config.omniauth :facebook, "405833446147616", "0beaeeb686199cb37585eb1ca5ce8339", 
+  config.omniauth :facebook, APP_ID, APP_SECRET, 
    {:scope => 'email, offline_access', :client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 
    #:strategy_class => OmniAuth::Strategies::Facebook
