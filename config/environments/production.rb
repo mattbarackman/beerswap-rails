@@ -75,8 +75,8 @@ Beerswap::Application.configure do
   :authentication     => :plain,   
   :user_name          => 'brewhubby@gmail.com',   
   :password           =>  ENV['INFO_MAIL_PASS']   
- }   
-...   
- config.action_mailer.default_url_options = { :host => 'http://sharp-sunset-7815.herokuapp.com/' }   
+ }
+    
+  config.action_mailer.default_url_options = { :host => 'http://sharp-sunset-7815.herokuapp.com/' }   
 
 end
