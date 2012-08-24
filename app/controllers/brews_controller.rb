@@ -83,4 +83,12 @@ class BrewsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def gallery
+    @brews = Brew.where(submitted_by: current_user)
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @beers }
+    end
+  end
 end

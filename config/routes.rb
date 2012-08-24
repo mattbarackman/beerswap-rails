@@ -1,7 +1,11 @@
 
 Beerswap::Application.routes.draw do
 
-  resources :brews
+  resources :brews do
+    collection do
+      get :gallery
+    end
+  end
 
   authenticated :user do
     root :to => 'home#index'
@@ -9,7 +13,7 @@ Beerswap::Application.routes.draw do
 
   root :to => 'home#index'
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
 
     resources :beers do
       collection do

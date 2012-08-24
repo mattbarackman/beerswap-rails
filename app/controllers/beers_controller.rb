@@ -8,13 +8,17 @@ class BeersController < ApplicationController
   # GET /beers
   # GET /beers.json
   before_filter :authenticate_user!
-  
-  def index
-    @beers = Beer.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @beers }
+  def index
+    if current_user.admin
+      @beers = Beer.all
+
+      respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @beers }
+      end
+    else
+      root_path
     end
   end
 

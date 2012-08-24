@@ -58,6 +58,14 @@ development:
 
     # Ensure all times are UTC in the app side. (default: false)
     # use_utc: false
+test:
+  sessions:
+    default:
+      database: beerswap_test
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
 
 production:
   sessions:
@@ -67,5 +75,3 @@ production:
       username: <%= 'heroku_app5420921' %>
       password: <%= 'ufoqjjrfbjipggp55chv2d92q0' %>
       database: <%= 'heroku_app5420921' %>
-
-  #    uri: <%= ENV['MONGOLAB_URI'] %>

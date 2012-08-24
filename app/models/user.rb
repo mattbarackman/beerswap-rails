@@ -12,8 +12,8 @@ class User
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
 
-  validates_presence_of :email
-  validates_presence_of :encrypted_password
+  #validates_presence_of :email
+  #validates_presence_of :encrypted_password
   
   ## Recoverable
   field :reset_password_token,   :type => String
@@ -43,12 +43,7 @@ class User
   ## Token authenticatable
   # field :authentication_token, :type => String
   field :name, type: String
-  field :email, type: String, default: ""
-  field :password, type: String
   field :admin, type: Boolean, default: false 
-
-  validates_presence_of :name, :email, :password
-  validates_uniqueness_of :name
 
   ## owns brews
   has_many :brews
