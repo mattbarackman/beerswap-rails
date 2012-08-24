@@ -61,4 +61,22 @@ Beerswap::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  require 'tlsmail'       
+  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)   
+  ActionMailer::Base.delivery_method = :smtp   
+  ActionMailer::Base.perform_deliveries = true   
+  ActionMailer::Base.raise_delivery_errors = true   
+  ActionMailer::Base.smtp_settings = {   
+  :enable_starttls_auto => true,     
+  :address            => 'smtp.gmail.com',   
+  :port               => 587,   
+  :tls                  => true,   
+  :domain             => 'http://sharp-sunset-7815.herokuapp.com/',    
+  :authentication     => :plain,   
+  :user_name          => 'brewhubby@gmail.com',   
+  :password           =>  ENV['INFO_MAIL_PASS']   
+ }   
+...   
+ config.action_mailer.default_url_options = { :host => 'YOUR_DOMAIN_NAME.com' }   
+
 end
