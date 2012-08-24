@@ -70,13 +70,13 @@ Beerswap::Application.configure do
   :enable_starttls_auto => true,     
   :address            => 'smtp.gmail.com',   
   :port               => 587,   
-  :tls                  => true,   
+  :tls                => true,   
   :domain             => 'http://sharp-sunset-7815.herokuapp.com/',    
   :authentication     => :plain,   
   :user_name          => 'brewhubby@gmail.com',   
   :password           =>  ENV['INFO_MAIL_PASS']   
  }   
 ...   
- config.action_mailer.default_url_options = { :host => 'YOUR_DOMAIN_NAME.com' }   
+ config.action_mailer.default_url_options = { :host => 'http://sharp-sunset-7815.herokuapp.com/' }   
 
 end
