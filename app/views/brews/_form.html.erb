@@ -23,7 +23,7 @@
   </div>
   <div class="field">
     <%= f.label :mash_type %><br />
-    <%= f.collection_select :style, Brew::MASH_TYPES, :to_s, :to_s, 
+    <%= f.collection_select :mash_type, Brew::MASH_TYPES, :to_s, :to_s, 
        :include_blank => true
     %>
   </div>
@@ -48,7 +48,7 @@
     <%= f.text_field :created_by %>
   </div>
 
-  <%= f.hidden_field :submitted_by, :value => current_user.name %>
+  <%= f.hidden_field :user_id, :value => current_user.id %>
 
   <div class="actions">
     <%= f.submit %>

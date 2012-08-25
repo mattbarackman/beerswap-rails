@@ -24,7 +24,7 @@ Beerswap::Application.routes.draw do
 
   resources :brewhouses
 
-#resources :users
+  resources :users
 
 
 

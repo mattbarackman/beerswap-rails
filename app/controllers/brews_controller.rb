@@ -28,7 +28,6 @@ class BrewsController < ApplicationController
   # GET /brews/new.json
   def new
     @brew = Brew.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @brew }
@@ -85,7 +84,7 @@ class BrewsController < ApplicationController
   end
 
   def gallery
-    @brews = Brew.where(submitted_by: current_user)
+    @brews = Brew.where(user_id: current_user.id).all.to_a
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @beers }

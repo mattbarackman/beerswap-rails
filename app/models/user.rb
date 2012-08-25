@@ -11,6 +11,9 @@ class User
   ## Database authenticatable
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
+  field :name
+
+  validates :name, presence: true
 
   #validates_presence_of :email
   #validates_presence_of :encrypted_password
@@ -42,8 +45,8 @@ class User
 
   ## Token authenticatable
   # field :authentication_token, :type => String
-  field :name, type: String
   field :admin, type: Boolean, default: false 
+
 
   ## owns brews
   has_many :brews

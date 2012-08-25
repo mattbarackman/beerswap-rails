@@ -11,6 +11,7 @@ class Brew
   field :submitted_by, type: String
   field :created_by, type: String
   field :submitted_at, type: DateTime, default: ->{ DateTime.now }
+  
 
   ## belongs to user
   belongs_to :user
