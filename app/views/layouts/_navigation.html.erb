@@ -6,7 +6,7 @@
             </li>
             <%= active_link 'Edit account', edit_user_registration_path %>
             <%= active_link 'My Brews', gallery_brews_path  %>
-            
+            <%= active_link 'Dashboard', user_path(current_user) %>
     <% else %>
             <%= active_link 'Login', new_user_session_path  %>  
             <%= active_link 'Sign up', new_user_registration_path  %>

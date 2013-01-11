@@ -12,6 +12,7 @@ class User
   field :email,              :type => String, :default => ""
   field :encrypted_password, :type => String, :default => ""
   field :name
+  field :fid
 
   validates :name, presence: true
 
@@ -50,6 +51,7 @@ class User
 
   ## owns brews
   has_many :brews
+  has_many :photos
   
   ## Facebook auth
   field :provider, :type => String
@@ -63,9 +65,33 @@ class User
                            provider:auth.provider,
                            uid:auth.uid,
                            email:auth.info.email,
-                           password:Devise.friendly_token[0,20]
+                           password:Devise.friendly_token[0,20],
                            )
     end
     user
   end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
 end
+
+#{
+# 'nickname' => raw_info['username'],
+# 'email' => raw_info['email'],
+# 'name' => raw_info['name'],
+# 'first_name' => raw_info['first_name'],
+# 'last_name' => raw_info['last_name'],
+# 'image' => "#{options[:secure_image_url] ? 'https' : 'http'}://graph.facebook.com/#{uid}/picture?type=#{options[:image_size] || 'square'}",
+# 'description' => raw_info['bio'],
+# 'urls' => {
+#   'Facebook' => raw_info['link'],
+#   'Website' => raw_info['website']
+# },
+# 'location' => (raw_info['location'] || {})['name'],
+# 'verified' => raw_info['verified']
+#}

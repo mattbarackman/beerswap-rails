@@ -1,20 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Name:</b>
-  <%= @user.name %>
-</p>
+<div class="row">
+  	<div class="span2">
+  	  <%= image_tag("https://graph.facebook.com/#{@uid}/picture?type=large") %>  	
+  	</div>
+  	<div class="span10">
+  		<h1><%= @user.name %></h1>
+  		<p>
+  			<b>Email:</b>
+  			<%= @user.email %>
+		</p>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<%= link_to 'Edit', edit_user_path(@user) %> |
+		<%= link_to 'Back', users_path %>
+  	</div>
+</div>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Password:</b>
-  <%= @user.password %>
-</p>
+  	
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+
+
+
+
